@@ -12,18 +12,37 @@ public class TaskManagementSystem {
 
 	    public TaskManagementSystem() {
 	        // your code goes here
+			tasks = new HashSet<>();
+			completedTasks = new ArrayList<>();
 	    }
 
 	    public void addTask(String taskName) {
 	    	 // your code goes here
+			tasks.add(taskName);
+			System.out.println("Task '" + taskName + "' added successfully.");
 	    }
 
 	    public void markTaskAsCompleted(String taskName) {
 	    	 // your code goes here
+			if (tasks.contains(taskName)) {
+				tasks.remove(taskName);
+				completedTasks.add(taskName);
+				System.out.println("Task '" + taskName + "' marked as completed.");
+			} else {
+				System.out.println("Task '" + taskName + "' not found.");
+			}
 	    }
 
 	    public void displayAllTasks() {
 	    	 // your code goes here
+			System.out.println("Tasks to be completed:");
+			for (String task : tasks) {
+				System.out.println("- " + task);
+			}
+			System.out.println("Completed tasks:");
+			for (String task : completedTasks) {
+				System.out.println("- " + task);
+			}
 	    }
 
 	    public static void main(String[] args) {
